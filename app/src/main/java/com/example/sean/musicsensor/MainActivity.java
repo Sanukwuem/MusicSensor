@@ -19,9 +19,51 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     public void onSensorChanged(SensorEvent event) {
 
 
-        if (event.values[0] < -3){
-            harppart.start();
+
+            harpone.start();
+            harptwo.start();
+            harpthree.start();
+            harpfour.start();
+            harpfive.start();
+            harpsix.start();
+
+            if (event.values[1] > 6){
+            harpone.setVolume(1,1);
+             } else {
+                harpone.setVolume(0,0);
+            }
+
+            if (event.values[1] > 3 && event.values[1] <= 6){
+                harptwo.setVolume(1,1);
+            } else {
+                harptwo.setVolume(0,0);
+            }
+
+        if (event.values[1] > 0 && event.values[1] <= 3){
+            harpthree.setVolume(1,1);
+        } else {
+            harpthree.setVolume(0,0);
         }
+
+        if (event.values[1] > -3 && event.values[1] <= 0){
+            harpfour.setVolume(1,1);
+        } else {
+            harpfour.setVolume(0,0);
+        }
+
+        if (event.values[1] > -6 && event.values[1] <= -3){
+            harpfive.setVolume(1,1);
+        } else {
+            harpfive.setVolume(0,0);
+        }
+
+        if (event.values[1] <= -6){
+            harpsix.setVolume(1,1);
+        } else {
+            harpsix.setVolume(0,0);
+        }
+
+        
 
 
     }
@@ -32,6 +74,14 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     }
 
     MediaPlayer harppart;
+
+    MediaPlayer harpone;
+    MediaPlayer harptwo;
+    MediaPlayer harpthree;
+    MediaPlayer harpfour;
+    MediaPlayer harpfive;
+    MediaPlayer harpsix;
+
     Sensor accelerometer;
     SensorManager sm;
 
@@ -45,13 +95,28 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         harppart = MediaPlayer.create(this, R.raw.harppart);
 
+        harpone = MediaPlayer.create(this, R.raw.harpone);
+        harptwo = MediaPlayer.create(this, R.raw.harptwo);
+        harpthree = MediaPlayer.create(this, R.raw.harpthree);
+        harpfour = MediaPlayer.create(this, R.raw.harpfour);
+        harpfive = MediaPlayer.create(this, R.raw.harpfive);
+        harpsix = MediaPlayer.create(this, R.raw.harpsix);
+
         setupMessageButton();
     }
 
     public void onStop() {
         super.onStop();
         harppart.stop();
+
+        harpone.stop();
+        harptwo.stop();
+        harpthree.stop();
+        harpfour.stop();
+        harpfive.stop();
+        harpsix.stop();
     }
+
 
     private void setupMessageButton() {
         Button messageButton = (Button) findViewById(R.id.button);

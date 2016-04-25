@@ -10,12 +10,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class FluteActivity extends AppCompatActivity implements SensorEventListener {
 
     MediaPlayer flutepart;
+    MediaPlayer fluteone;
+    MediaPlayer flutetwo;
+    MediaPlayer flutethree;
+    MediaPlayer flutefour;
+    MediaPlayer flutefive;
+    MediaPlayer flutesix;
+
     Sensor accelerometer;
     SensorManager sm;
 
@@ -29,6 +35,13 @@ public class FluteActivity extends AppCompatActivity implements SensorEventListe
         sm.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
 
         flutepart = MediaPlayer.create(this, R.raw.flutepart);
+
+        fluteone = MediaPlayer.create(this, R.raw.fluteone);
+        flutetwo = MediaPlayer.create(this, R.raw.flutetwo);
+        flutethree = MediaPlayer.create(this, R.raw.flutethree);
+        flutefour = MediaPlayer.create(this, R.raw.flutefour);
+        flutefive = MediaPlayer.create(this, R.raw.flutefive);
+        flutesix = MediaPlayer.create(this, R.raw.flutesix);
 
         setupMessageButton();
         setupMessageButton2();
@@ -66,6 +79,13 @@ public class FluteActivity extends AppCompatActivity implements SensorEventListe
     public void onStop() {
         super.onStop();
         flutepart.stop();
+
+        fluteone.stop();
+        flutetwo.stop();
+        flutethree.stop();
+        flutefour.stop();
+        flutefive.stop();
+        flutesix.stop();
     }
 
 
@@ -73,9 +93,52 @@ public class FluteActivity extends AppCompatActivity implements SensorEventListe
     public void onSensorChanged(SensorEvent event) {
 
 
-        if (event.values[0] < -3){
-            flutepart.start();
+
+        fluteone.start();
+        flutetwo.start();
+        flutethree.start();
+        flutefour.start();
+        flutefive.start();
+        flutesix.start();
+
+        if (event.values[1] > 6){
+            fluteone.setVolume(1, 1);
+        } else {
+            fluteone.setVolume(0, 0);
         }
+
+        if (event.values[1] > 3 && event.values[1] <= 6){
+            flutetwo.setVolume(1, 1);
+        } else {
+            flutetwo.setVolume(0, 0);
+        }
+
+        if (event.values[1] > 0 && event.values[1] <= 3){
+            flutethree.setVolume(1, 1);
+        } else {
+            flutethree.setVolume(0, 0);
+        }
+
+        if (event.values[1] > -3 && event.values[1] <= 0){
+            flutefour.setVolume(1, 1);
+        } else {
+            flutefour.setVolume(0, 0);
+        }
+
+        if (event.values[1] > -6 && event.values[1] <= -3){
+            flutefive.setVolume(1, 1);
+        } else {
+            flutefive.setVolume(0, 0);
+        }
+
+        if (event.values[1] <= -6){
+            flutesix.setVolume(1, 1);
+        } else {
+            flutesix.setVolume(0, 0);
+        }
+
+
+
     }
 
     @Override
