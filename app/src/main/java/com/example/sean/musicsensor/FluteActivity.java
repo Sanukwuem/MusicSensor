@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 public class FluteActivity extends AppCompatActivity implements SensorEventListener {
 
-    MediaPlayer flute;
+    MediaPlayer flutepart;
     Sensor accelerometer;
     SensorManager sm;
 
@@ -28,11 +28,12 @@ public class FluteActivity extends AppCompatActivity implements SensorEventListe
         accelerometer=sm.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         sm.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
 
-        flute = MediaPlayer.create(this, R.raw.flutepart);
+        flutepart = MediaPlayer.create(this, R.raw.flutepart);
 
         setupMessageButton();
         setupMessageButton2();
     }
+
 
     private void setupMessageButton() {
         Button messageButton = (Button) findViewById(R.id.button2);
@@ -62,13 +63,18 @@ public class FluteActivity extends AppCompatActivity implements SensorEventListe
         });
     }
 
+    public void onStop() {
+        super.onStop();
+        flutepart.stop();
+    }
+
 
     @Override
     public void onSensorChanged(SensorEvent event) {
 
 
         if (event.values[0] < -3){
-            flute.start();
+            flutepart.start();
         }
     }
 

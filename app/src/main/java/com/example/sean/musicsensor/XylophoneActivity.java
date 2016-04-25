@@ -48,6 +48,11 @@ public class XylophoneActivity extends AppCompatActivity implements SensorEventL
         });
     }
 
+    public void onStop() {
+        super.onStop();
+        xylophonepart.stop();
+    }
+
     @Override
     public void onSensorChanged(SensorEvent event) {
         if (event.values[0] < -3) {

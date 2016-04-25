@@ -1,5 +1,6 @@
 package com.example.sean.musicsensor;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             harppart.start();
         }
 
-        
+
     }
 
     @Override
@@ -45,6 +46,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         harppart = MediaPlayer.create(this, R.raw.harppart);
 
         setupMessageButton();
+    }
+
+    public void onStop() {
+        super.onStop();
+        harppart.stop();
     }
 
     private void setupMessageButton() {
