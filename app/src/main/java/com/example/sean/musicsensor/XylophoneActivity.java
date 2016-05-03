@@ -77,12 +77,12 @@ public class XylophoneActivity extends AppCompatActivity implements SensorEventL
     @Override
     public void onSensorChanged(SensorEvent event) {
 
-        xylophoneone.start();
-        xylophonetwo.start();
-        xylophonethree.start();
-        xylophonefour.start();
-        xylophonefive.start();
-        xylophonesix.start();
+        //xylophoneone.start();
+        //xylophonetwo.start();
+        //xylophonethree.start();
+        //xylophonefour.start();
+        //xylophonefive.start();
+        //xylophonesix.start();
 
         if (event.values[1] > 6){
             xylophoneone.setVolume(1, 1);
@@ -120,6 +120,31 @@ public class XylophoneActivity extends AppCompatActivity implements SensorEventL
             xylophonesix.setVolume(0, 0);
         }
 
+    }
+
+    private void setupPlayButton(){
+        Button playButton = (Button) findViewById(R.id.button6);
+        playButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                xylophoneone.start();
+                xylophonetwo.start();
+                xylophonethree.start();
+                xylophonefour.start();
+                xylophonefive.start();
+                xylophonesix.start();
+                xylophoneone.setLooping(true);
+                xylophonetwo.setLooping(true);
+                xylophonethree.setLooping(true);
+                xylophonefour.setLooping(true);
+                xylophonefive.setLooping(true);
+                xylophonesix.setLooping(true);
+
+
+            }
+        });
     }
 
     @Override

@@ -45,6 +45,7 @@ public class FluteActivity extends AppCompatActivity implements SensorEventListe
 
         setupMessageButton();
         setupMessageButton2();
+        setupPlayButton();
     }
 
 
@@ -94,12 +95,12 @@ public class FluteActivity extends AppCompatActivity implements SensorEventListe
 
 
 
-        fluteone.start();
-        flutetwo.start();
-        flutethree.start();
-        flutefour.start();
-        flutefive.start();
-        flutesix.start();
+        //fluteone.start();
+        //flutetwo.start();
+        //flutethree.start();
+        //flutefour.start();
+        //flutefive.start();
+        //flutesix.start();
 
         if (event.values[1] > 6){
             fluteone.setVolume(1, 1);
@@ -139,6 +140,31 @@ public class FluteActivity extends AppCompatActivity implements SensorEventListe
 
 
 
+    }
+
+    private void setupPlayButton(){
+        Button playButton = (Button) findViewById(R.id.button6);
+        playButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                fluteone.start();
+                flutetwo.start();
+                flutethree.start();
+                flutefour.start();
+                flutefive.start();
+                flutesix.start();
+                fluteone.setLooping(true);
+                flutetwo.setLooping(true);
+                flutethree.setLooping(true);
+                flutefour.setLooping(true);
+                flutefive.setLooping(true);
+                flutesix.setLooping(true);
+
+
+            }
+        });
     }
 
     @Override

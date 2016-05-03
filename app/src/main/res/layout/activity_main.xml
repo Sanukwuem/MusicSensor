@@ -31,5 +31,17 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="33dp" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Play"
+        android:id="@+id/button5"
+        android:layout_below="@+id/textView"
+        android:layout_marginTop="130dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
 
 </RelativeLayout>
